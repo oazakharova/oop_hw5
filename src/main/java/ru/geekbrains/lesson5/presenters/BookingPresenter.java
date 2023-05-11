@@ -53,4 +53,18 @@ public class BookingPresenter implements ViewObserver {
         int reservationNo = model.reservationTable(orderDate, tableNo, name);
         updateReservationStatusView(reservationNo);
     }
+
+    /**
+     * Изменение бронирования столика
+     * @param oldReservation номер старого бронирования, которое нужно изменить
+     * @param reservationDate актуальная дата бронирования
+     * @param tableNo актуальный номер столика
+     * @param name актуальное имя клиента
+     */
+    @Override
+    public void onChangeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
+        int reservationNo = model.ChangeReservationTable(oldReservation, reservationDate, tableNo, name);
+        updateReservationStatusView(reservationNo);
+    }
+
 }

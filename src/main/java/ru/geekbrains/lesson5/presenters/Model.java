@@ -22,4 +22,12 @@ public interface Model {
      */
     int reservationTable(Date reservationDate, int tableNo, String name);
 
+    /**
+     * Изменение бронирования столика
+     * @param oldReservation номер старого бронирования, которое нужно изменить
+     * @param reservationDate актуальная дата бронирования
+     * @param tableNo актуальный номер столика
+     * @param name актуальное имя клиента
+     */
+    int ChangeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name);
 }

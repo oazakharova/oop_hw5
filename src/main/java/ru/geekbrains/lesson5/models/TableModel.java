@@ -5,6 +5,7 @@ import ru.geekbrains.lesson5.presenters.Model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 public class TableModel implements Model {
 
@@ -34,15 +35,29 @@ public class TableModel implements Model {
         return -1;
         //throw new RuntimeException("Некорректный номер столика");
     }
+
+
     /**
      * TODO: Разработать самостоятельно
      * Поменять бронь столика
-     * @param oldReservation номер старого резерва (для снятия)
+     *
+     * @param oldReservation  номер старого резерва (для снятия)
      * @param reservationDate дата резерва столика
-     * @param tableNo номер столика
-     * @param name Имя
+     * @param tableNo         номер столика
+     * @param name            Имя
      */
-    public int changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
+    public int ChangeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name) {
+        Reservation reservationToChange = null;
+        for (Table table : tables) {
+            if (table.getNo() == tableNo) {
+                for (Reservation reservation : table.getReservations()) {
+                    if (reservation.getId() == oldReservation) {
+                        table.getReservations().remove(reservation);
+                        return reservationTable(reservationDate, tableNo, name);
+                    }
+                }
+            }
+        }
         return -1;
     }
 

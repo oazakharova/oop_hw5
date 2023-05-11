@@ -66,6 +66,7 @@ public class BookingView implements View {
      */
     public void changeReservationTable(int oldReservation, Date reservationDate, int tableNo, String name){
         //TODO: Обратиться к наблюдателю, указать на процедуру изменения бронирования столика
+        observer.onChangeReservationTable(oldReservation, reservationDate, tableNo, name);
     }
 
 
